@@ -2,6 +2,8 @@ package guestbook;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.jtwig.JtwigModel;
+import org.jtwig.JtwigTemplate;
 
 import java.io.*;
 import java.net.URLDecoder;
@@ -61,10 +63,23 @@ public class Guestbook implements HttpHandler {
                 System.out.println(entry);
             }
 
-            response = "<html><body><h1>GUEST BOOK</h1>" +
-                    "<h2><b>" + inputs.get("message") + "</b><br>Name: " + inputs.get("name") +
-                    "</h2>" +
-                    "</body><html>";
+            // get a template file
+            JtwigTemplate template = JtwigTemplate.classpathTemplate("templates/example.twig");
+
+            // create a model that will be passed to a template
+            JtwigModel model = JtwigModel.newModel();
+
+            // fill the model with values
+            model.with("entry", newEntry);
+            model.with("users_comments", comments);
+
+            // render a template to a string
+            response = template.render(model);
+
+//            response = "<html><body><h1>GUEST BOOK</h1>" +
+//                    "<h2><b>" + inputs.get("message") + "</b><br>Name: " + inputs.get("name") +
+//                    "</h2>" +
+//                    "</body><html>";
         }
 
 

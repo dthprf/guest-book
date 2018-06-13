@@ -15,6 +15,7 @@ public class App {
         server.createContext("/guestbook", new Guestbook());
         server.createContext("/guestbookEntrys", new GuestBookEntrys());
         server.createContext("/template", new Template());
+        server.createContext("/static", new Static());
         server.setExecutor(null); // creates a default executor
 
         // start listening

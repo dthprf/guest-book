@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="static/main.css" media="screen">
 </head>
 <body>
+<h1 class="banner">GUEST BOOK</h1>
 
-<h1>Hello {{ client }}</h1>
-<p>Your lucky number is: {{ lucky_number }}</p>
-<ul>
-    {% for key, value in users_pass %}
-        <li>{{ key }} -  {{ value }}</li>
+<form class="form-style-4" action="" method="post">
+<label for="field1">
+<span>Enter Your Name</span><input type="text" name="field1" required="true" />
+</label>
+<label for="field2">
+<span>Email Address</span><input type="email" name="field2" required="true" />
+</label>
+<label for="field3">
+<span>Short Subject</span><input type="text" name="field3" required="true" />
+</label>
+<label for="field4">
+<span>Message to Us</span><textarea name="field4" onkeyup="adjust_textarea(this)" required="true"></textarea>
+</label>
+<label>
+<span>&nbsp;</span><input type="submit" value="Send Letter" />
+</label>
+</form>
+
+<ul class="past-comments">
+    {% for comment in users_comments %}
+        <li>{{ comment.id }}</li>
+        <li>{{ comment.name }}</li>
+        <li>{{ comment.message }}</li>
+        <li>{{ comment.date }}</li>
     {% endfor %}
 </ul>
+
 </body>
 </html>

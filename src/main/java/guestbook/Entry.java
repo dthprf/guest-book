@@ -1,10 +1,10 @@
 package guestbook;
 
 public class Entry {
-    private int id;
-    private String name;
-    private String message;
-    private String date;
+    public int id;
+    public String name;
+    public String message;
+    public String date;
 
     public void setId(int id) {
         this.id = id;
