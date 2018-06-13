@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+      <title>Guest book</title>
+
+</head>
+
+<body>
+<h1> Guest book </h1>
+<h2>Thanks for your message {{ client }}</h2>
+<ul>
+    {% for key, value in usersEntrys %}
+        <li>{{ key }} -  {{ value }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
