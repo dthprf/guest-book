@@ -1,4 +1,4 @@
-package guestbook;
+package guestbook.Helpers;
 
 import java.io.File;
 import java.util.regex.Matcher;

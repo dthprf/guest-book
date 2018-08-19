@@ -1,4 +1,4 @@
-package guestbook;
+package guestbook.DBconnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

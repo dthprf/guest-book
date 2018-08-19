@@ -1,37 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" type="text/css" href="static/main.css" media="screen">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>The Guest Book</title>
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed|Open+Sans:400,300,700|Yesteryear" rel="stylesheet" type="text/css"
+    />
+    <link href="static/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
+
 <body>
-<h1 class="banner">GUEST BOOK</h1>
+    <div id="menu-wrapper">
+        <div id="menu">
+            <ul>
+                <li class="current_page_item">
+                    <a href="#">Homepage</a>
+                </li>
+                <li>
+                    <a href="#">Sign up</a>
+                </li>
+                <li>
+                    <a href="#">Log in</a>
+                </li>
+            </ul>
+        </div>
 
-<form class="form-style-4" action="" method="post">
-<label for="field1">
-<span>Enter Your Name</span><input type="text" name="field1" required="true" />
-</label>
-<label for="field2">
-<span>Email Address</span><input type="email" name="field2" required="true" />
-</label>
-<label for="field3">
-<span>Short Subject</span><input type="text" name="field3" required="true" />
-</label>
-<label for="field4">
-<span>Message to Us</span><textarea name="field4" onkeyup="adjust_textarea(this)" required="true"></textarea>
-</label>
-<label>
-<span>&nbsp;</span><input type="submit" value="Send Letter" />
-</label>
-</form>
+    </div>
 
-<ul class="past-comments">
-    {% for comment in users_comments %}
-        <li>{{ comment.id }}</li>
-        <li>{{ comment.name }}</li>
-        <li>{{ comment.message }}</li>
-        <li>{{ comment.date }}</li>
-    {% endfor %}
-</ul>
+    <section id="main-banner" class="banner">
+        <div class="banner-logo">
+            <img src="static/images/guestBookLogo.png" alt="Logo">
+        </div>
+    </section>
+
+
+    <div id="header-wrapper">
+        <div id="header">
+        </div>
+    </div>
+    <div id="wrapper">
+        <!-- end #header -->
+        <div id="page">
+
+            <div class="form">
+
+                <form class="form-style-4" action="" onsubmit="" method="post" style="display: {{formDisplay}};">
+
+                    <label class="message" for="message">
+                        <input type="text" name="message" required="true" />
+                        <span>message</span>
+                    </label>
+
+                    <label class="name" for="name">
+                        <input type="text" name="name" required="true" />
+                        <span>name</span>
+                    </label>
+                    <label class="submit-b">
+                        <span>&nbsp;</span>
+                        <input class="button" type="submit" value="Submit" />
+                    </label>
+                </form>
+            </div>
+
+            <div id="page-bgtop">
+                <div id="page-bgbtm">
+                    <div id="content">
+
+                        {% for comment in users_comments %}
+                           <div class="post">
+                                <p class="meta">
+                                    <span class="date">{{ comment.date }}</span>
+                                    <span class="posted">Posted by
+                                        <a href="#">{{ comment.name }}</a>
+                                    </span>
+                                </p>
+                                <div class="entry">
+                                <p>{{ comment.message }}</p>
+                                </div>
+                           </div>
+
+                        {% endfor %}
+
+                        <div class="post">
+                            <p class="meta">
+                                <span class="date">May 10, 2013</span>
+                                <span class="posted">Posted by
+                                    <a href="#">Someone</a>
+                                </span>
+                            </p>
+                            <div style="clear: both;">&nbsp;</div>
+                            <div class="entry">
+                                <p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum
+                                    ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci
+                                    in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
+
 </html>

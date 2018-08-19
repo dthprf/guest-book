@@ -1,4 +1,4 @@
-package guestbook;
+package guestbook.Model;
 
 public class Entry {
     public int id;
